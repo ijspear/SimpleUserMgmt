@@ -33,6 +33,21 @@
       "name": "Fonts/Fonts.css",
       "description": "",
       "type": "Stylesheet"
+    },
+    {
+      "name": "JavaScript/AddUser.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "JavaScript/DeleteUser.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "JavaScript/EditUser.js",
+      "description": "",
+      "type": "JavaScript"
     }
   ],
   "userControls": [],
@@ -44,7 +59,17 @@
       "keepAlive": false
     }
   ],
-  "userFunctions": [],
+  "userFunctions": [
+    {
+      "url": "JavaScript\\AddUser.js"
+    },
+    {
+      "url": "JavaScript\\DeleteUser.js"
+    },
+    {
+      "url": "JavaScript\\EditUser.js"
+    }
+  ],
   "symbols": {
     "internal": {}
   },
