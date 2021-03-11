@@ -48,6 +48,16 @@
       "name": "JavaScript/EditUser.js",
       "description": "",
       "type": "JavaScript"
+    },
+    {
+      "name": "JavaScript/FilterArray.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "JavaScript/sweetAlert2.js",
+      "description": "",
+      "type": "JavaScript"
     }
   ],
   "userControls": [],
@@ -68,6 +78,9 @@
     },
     {
       "url": "JavaScript\\EditUser.js"
+    },
+    {
+      "url": "JavaScript\\FilterArray.js"
     }
   ],
   "symbols": {

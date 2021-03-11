@@ -12,7 +12,7 @@
     <HmiTitle>Please enter your Title...</HmiTitle>
     <HmiVerboseLevel>2</HmiVerboseLevel>
     <HmiVersion>1.0.0.0</HmiVersion>
-    <HmiCommunicationServerPort>3000</HmiCommunicationServerPort>
+    <HmiCommunicationServerPort>3001</HmiCommunicationServerPort>
     <HmiLogTcHmiServerMessages>false</HmiLogTcHmiServerMessages>
     <HmiLogDesignerModeComMessages>false</HmiLogDesignerModeComMessages>
     <HmiServerVersion>Latest</HmiServerVersion>
@@ -23,6 +23,11 @@
     <EnableTypeScript>true</EnableTypeScript>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
     <Name>SimpleUserMgmtHMI</Name>
+    <HmiCommunicationRouterPort>10100</HmiCommunicationRouterPort>
+    <HmiCommunicationServerAuthPort>13001</HmiCommunicationServerAuthPort>
+    <HmiInitial>1.12.744.3</HmiInitial>
+    <HmiRecent>1.12.744.3</HmiRecent>
+    <HmiServerNodeAdvancedView>False</HmiServerNodeAdvancedView>
   </PropertyGroup>
   <PropertyGroup>
     <TwinCATHmi_Tasks>$(TcHmiDirectory)\MSBuild\Beckhoff.TwinCAT.HMI.tasks</TwinCATHmi_Tasks>
@@ -110,18 +115,61 @@
   <Target Name="ReBuild" DependsOnTargets="Clean; Build" />
   <Target Name="Clean" DependsOnTargets="BaseClean" />
   <ItemGroup>
+    <Folder Include="Fonts\" />
     <Folder Include="Images" />
     <Folder Include="Images\Manifest" />
     <Folder Include="Imports" />
     <Folder Include="Imports\Images" />
     <Folder Include="Imports\Videos" />
+    <Folder Include="KeyboardLayouts\" />
     <Folder Include="Localization" />
+    <Folder Include="JavaScript" />
     <Folder Include="Themes" />
     <Folder Include="Themes\Base\" />
     <Folder Include="Server" />
     <Folder Include="Properties" />
     <Content Include=".eslintrc.json">
       <Visible>false</Visible>
+    </Content>
+    <Content Include="Images\user-add.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\user-delete.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\user-edit.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="JavaScript\AddUser.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>JavaScript\AddUser.js</DependentUpon>
+    </Content>
+    <Content Include="JavaScript\AddUser.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="JavaScript\DeleteUser.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>JavaScript\DeleteUser.js</DependentUpon>
+    </Content>
+    <Content Include="JavaScript\DeleteUser.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="JavaScript\EditUser.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>JavaScript\EditUser.js</DependentUpon>
+    </Content>
+    <Content Include="JavaScript\EditUser.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="JavaScript\FilterArray.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>JavaScript\FilterArray.js</DependentUpon>
+    </Content>
+    <Content Include="JavaScript\FilterArray.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="JavaScript\sweetAlert2.js">
+      <SubType>Content</SubType>
     </Content>
     <Content Include="tsconfig.tpl.json">
       <SubType>Content</SubType>
@@ -340,5 +388,6 @@
       <SubType>Content</SubType>
       <Visible>false</Visible>
     </Content>
+    <Folder Include="Themes\Base\Images\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,30 @@
+﻿{
+  "function": {
+    "name": "FilterArray",
+    "namespace": "TcHmi.Functions.SimpleUserMgmtHMI",
+    "displayName": "FilterArray",
+    "description": "",
+    "waitMode": "Synchronous",
+    "category": "",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/Array"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": [
+      {
+        "name": "ArrayToFilter",
+        "displayName": "ArrayToFilter",
+        "type": "tchmi:general#/definitions/Array",
+        "description": "This is an important Parameter which does... This text is used in a tooltip.",
+        "defaultValue": "",
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      }
+    ]
+  },
+  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json"
+}

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+  <POU Name="SavePV" Id="{2a694eec-8634-491c-86e5-5e8daf2ff8c8}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM SavePV
+VAR
+	fbWritePersistent		:		WritePersistentData;
+	TonStart				:		TON;
+	TonInterval				:		TON;
+	r_trigStart				:		R_TRIG;
+	bStartWrite				:		BOOL;
+	bWriteNow				:		BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Backup the machine config vars
+//Write a backup when the machine starts - on rising edge
+	r_trigStart(CLK:= TonStart.Q);
+	TonStart(IN:= TRUE, PT:= T#10MS);
+
+//backup persistent vars every 1 minute
+	TonInterval(IN:=TonStart.Q AND NOT fbWritePersistent.BUSY, PT:= T#60S);
+
+	fbWritePersistent(
+		NETID:= '', 
+		PORT:= 851, 
+		START:= bStartWrite, 
+		TMOUT:= T#10S);
+		
+//Execute the backup
+	IF NOT fbWritePersistent.Busy AND r_trigStart.Q THEN
+		bStartWrite := TRUE;
+	ELSIF NOT fbWritePersistent.BUSY AND TonInterval.Q THEN
+		bStartWrite := TRUE;
+	ELSIF NOT fbWritePersistent.BUSY AND bWriteNow THEN
+		bStartWrite := TRUE;
+	ELSE
+		bStartWrite := FALSE;
+	END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="SavePV">
+      <LineId Id="6" Count="22" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

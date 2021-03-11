@@ -24,7 +24,42 @@
     "DEFAULTTIMEFORMATLOCALE": "client",
     "DEFAULTTIMEZONE": "client",
     "DEFAULTUSERGROUP": "__SystemUsers",
-    "DEFINITIONS": {},
+    "DEFINITIONS": {
+        "PLC1.ARRAY (0..24) OF ST_DUT": {
+            "items": {
+                "$ref": "#/definitions/PLC1.ST_DUT"
+            },
+            "maxItems": 25,
+            "minItems": 25,
+            "type": "array"
+        },
+        "PLC1.ST_DUT": {
+            "properties": {
+                "bAdmin": {
+                    "$ref": "tchmi:general#/definitions/BOOL"
+                },
+                "bDisable": {
+                    "$ref": "tchmi:general#/definitions/BOOL"
+                },
+                "iPin": {
+                    "$ref": "tchmi:general#/definitions/UINT"
+                },
+                "sDateCreated": {
+                    "$ref": "tchmi:general#/definitions/STRING(80)"
+                },
+                "sFirstName": {
+                    "$ref": "tchmi:general#/definitions/STRING(80)"
+                },
+                "sLastName": {
+                    "$ref": "tchmi:general#/definitions/STRING(80)"
+                },
+                "sUserName": {
+                    "$ref": "tchmi:general#/definitions/STRING(80)"
+                }
+            },
+            "type": "object"
+        }
+    },
     "DEFLATECOMPRESSIONLEVEL": 5,
     "DIAGNOSTICS_DOMAINS": [],
     "DISCOVERY": 2,
@@ -1979,6 +2014,16 @@
             "OPTIONS": {},
             "SCHEMA": {
                 "function": true
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.MAIN.aArray": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "PLC1::MAIN::aArray",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/PLC1.ARRAY (0..24) OF ST_DUT"
             },
             "USEMAPPING": true
         },
