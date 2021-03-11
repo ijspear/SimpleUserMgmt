@@ -13,6 +13,8 @@ VAR
 	iConsolCount : UINT;
 	bEmpty: BOOL;
 	iEmptyCount : UINT;
+	iTest	:	UINT;
+	iTest2	:	UINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -26,8 +28,31 @@ IF bDeleteRow THEN
 	aArray[iSelectedRow].sDateCreated := '';
 	aArray[iSelectedRow].bAdmin := FALSE;
 	aArray[iSelectedRow].bDisable := FALSE;
+	FOR iConsolCount := 0 TO 24 DO
+		iTest2 := iTest2 + 1;
+		IF aArray[iConsolCount].sFirstName = '' THEN
+			iTest := iTest + 1;
+			IF iConsolCount = 24 THEN
+				aArray[iConsolCount].sFirstName := '';
+				aArray[iConsolCount].sLastName := '';
+				aArray[iConsolCount].sUserName := '';
+				aArray[iConsolCount].sDateCreated := '';
+				aArray[iConsolCount].iPin := 0;
+				aArray[iConsolCount].bAdmin := FALSE;
+				aArray[iConsolCount].bDisable := FALSE;
+			ELSE
+				aArray[iConsolCount] := aArray[iConsolCount + 1];
+				aArray[iConsolCount + 1].sFirstName := '';
+				aArray[iConsolCount + 1].sLastName := '';
+				aArray[iConsolCount + 1].sUserName := '';
+				aArray[iConsolCount + 1].sDateCreated := '';
+				aArray[iConsolCount + 1].iPin := 0;
+				aArray[iConsolCount + 1].bAdmin := FALSE;
+				aArray[iConsolCount + 1].bDisable := FALSE;
+			END_IF
+		END_IF
+	END_FOR
 	bDeleteRow := FALSE;
-	bConsolidate := TRUE;
 END_IF
 
 IF bEmpty THEN
@@ -41,30 +66,18 @@ IF bEmpty THEN
 		aArray[iEmptyCount].bDisable := FALSE;
 	END_FOR
 	bEmpty := FALSE;
-END_IF
-
-
-IF bConsolidate THEN
-	FOR iConsolCount := 0 TO 24 DO
-		IF aArray[iConsolCount].sFirstName = '' THEN
-			aArray[iConsolCount] := aArray[iConsolCount + 1];
-		END_IF
-		IF aArray[iConsolCount].sFirstName = aArray[iConsolCount + 1].sFirstName THEN
-			aArray[iConsolCount + 1].sFirstName := '';
-			aArray[iConsolCount + 1].sLastName := '';
-			aArray[iConsolCount + 1].sUserName := '';
-			aArray[iConsolCount + 1].sDateCreated := '';
-			aArray[iConsolCount + 1].iPin := 0;
-			aArray[iConsolCount + 1].bAdmin := FALSE;
-			aArray[iConsolCount + 1].bDisable := FALSE;
-		END_IF
-	END_FOR
-	bConsolidate := FALSE;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="19" Count="43" />
-      <LineId Id="2" Count="0" />
+      <LineId Id="19" Count="9" />
+      <LineId Id="90" Count="11" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="124" Count="6" />
+      <LineId Id="116" Count="1" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="31" Count="13" />
     </LineIds>
   </POU>
 </TcPlcObject>

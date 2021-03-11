@@ -28,6 +28,11 @@
                         confirmButtonText: 'Yes, delete the user!'
                     }).then((result) => {
                         if (result.value) {
+
+                            //TcHmi.Symbol.writeEx('%s%PLC1.MAIN.bDeleteRow%/s%', true, function(data) {
+                            //    console.log(data);
+                            //}); 
+                            
                             bDelete.write(true); //WRITE TRUE TO PLC-VARIABLE
                             Swal.fire(
                                 'Deleted!',
