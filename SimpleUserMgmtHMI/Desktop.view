@@ -2,7 +2,7 @@
   <div id="ViewDesktopBeckhoffLogo" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-src="Images/Beckhoff_Logo.svg" data-tchmi-left="20" data-tchmi-top="20" data-tchmi-width="194" data-tchmi-height="57">
 
   </div>
-<div id="TcHmiDatagrid" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid" data-tchmi-height="308" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px"    data-tchmi-top="101" data-tchmi-top-unit="px" data-tchmi-width="580" data-tchmi-width-unit="px" data-tchmi-src-data="%f%TcHmi.Functions.SimpleUserMgmtHMI.FilterArray(%s%PLC1.MAIN.aArray%/s%)%/f%" data-tchmi-row-numbers-resizable="False" data-tchmi-row-numbers-width="28">
+<div id="TcHmiDatagrid" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid" data-tchmi-height="308" data-tchmi-height-unit="px" data-tchmi-left="34" data-tchmi-left-unit="px"    data-tchmi-top="101" data-tchmi-top-unit="px" data-tchmi-width="580" data-tchmi-width-unit="px" data-tchmi-src-data="%f%FilterArray(%s%PLC1.MAIN.aArray%/s%)%/f%" data-tchmi-row-numbers-resizable="False" data-tchmi-row-numbers-width="28">
 <script data-tchmi-target-attribute="data-tchmi-src-column" type="application/json">
 [
   {
@@ -195,6 +195,29 @@
   "bottomLeftUnit": "px",
   "bottomRightUnit": "px"
 }
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_2.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.SimpleUserMgmtHMI.DeleteUser",
+        "fnParams": [
+          {
+            "objectType": "Symbol",
+            "valueType": "tchmi:general#/definitions/String",
+            "symbolExpression": "%s%PLC1.MAIN.bDeleteRow%/s%"
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
 </script>
 </div>
 

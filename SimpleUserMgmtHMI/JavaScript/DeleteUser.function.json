@@ -1,20 +1,4 @@
 ﻿{
-  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json",
-  "apiVersion": 1,
-  "version": {
-    "full": "0.0.0.0",
-    "major": 0,
-    "minor": 0,
-    "revision": 0,
-    "build": 0
-  },
-  "dependencyFiles": [
-    {
-      "name": "DeleteUser.js",
-      "type": "JavaScript",
-      "description": ""
-    }
-  ],
   "function": {
     "name": "DeleteUser",
     "namespace": "TcHmi.Functions.SimpleUserMgmtHMI",
@@ -25,16 +9,22 @@
     "returnValue": {
       "type": "tchmi:general#/definitions/String"
     },
+    "visible": true,
+    "injectContextObject": false,
     "arguments": [
       {
-        "name": "par1",
-        "displayName": "Parameter",
-        "type": "tchmi:general#/definitions/Number",
+        "name": "bDelete",
+        "displayName": "bDelete",
+        "type": "tchmi:project#/definitions/Symbol_Of_Boolean",
         "description": "This is an important Parameter which does... This text is used in a tooltip.",
-        "defaultValue": null,
+        "defaultValue": false,
         "required": true,
-        "bindable": true
+        "bindable": true,
+        "restParameter": false,
+        "asReference": true,
+        "allowControlAttributeBindingOptions": false
       }
     ]
-  }
+  },
+  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json"
 }

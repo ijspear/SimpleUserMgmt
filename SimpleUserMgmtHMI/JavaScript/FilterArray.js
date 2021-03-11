@@ -7,7 +7,7 @@
         (function (SimpleUserMgmtHMI) {
             function FilterArray(ArrayToFilter) {
 
-                var array = ArrayToFilter.filter(a => a.sFirstName != "");
+                var array = ArrayToFilter.filter(a => a.sFirstName != '');
                 return array;
             }
             SimpleUserMgmtHMI.FilterArray = FilterArray;
